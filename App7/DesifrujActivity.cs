@@ -51,7 +51,8 @@ namespace App7
 
             if (resultCode == Result.Ok)
             {
-               text.Text =  Steganografie.ZiskejText(NGetBitmap(data.Data));            
+               var result =  Steganografie.ZiskejText(NGetBitmap(data.Data));
+               text.Text = Core.IsValid(result)? result : "Neplatny obrazek";
             }
         }
         private Android.Graphics.Bitmap NGetBitmap(Android.Net.Uri uriImage)

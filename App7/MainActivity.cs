@@ -7,7 +7,7 @@ using Android.Net;
 
 namespace App7
 {
-    [Activity(Label = "App7", MainLauncher = true)]
+    [Activity(Label = "Steganografie", MainLauncher = true)]
     public class MainActivity : Activity
     {
         Button btn;
@@ -19,10 +19,10 @@ namespace App7
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            btn = FindViewById<Button>(Resource.Id.button1);         
-            btnPotvrdit = FindViewById<Button>(Resource.Id.btnPotvrdit);          
+            btn = FindViewById<Button>(Resource.Id.button1);  // dešifruj       
+            btnPotvrdit = FindViewById<Button>(Resource.Id.btnPotvrdit); // zašifruj         
 
-            btnPotvrdit.Clickable = false; // tlacitko nebude reagovat na kliknuti
+         //   btnPotvrdit.Clickable = false; // tlacitko nebude reagovat na kliknuti
             // Eventy
             btnPotvrdit.Click += BtnPotvrdit_Click;
             btn.Click += Btn_Click;

@@ -41,12 +41,13 @@ namespace App7
             {
                 using (var os = new System.IO.FileStream(Android.OS.Environment.ExternalStorageDirectory + "/DCIM/Camera/MikeBitMap2.jpg", System.IO.FileMode.CreateNew))
                 {
-                    bmp.Compress(Bitmap.CompressFormat.Jpeg, 95, os);
+                    bmp.Compress(Bitmap.CompressFormat.Png, 100, os);
+                    bmp.Dispose();
                 }
             }
             catch (Exception e)
             {
-                int a = 10;
+               
             }
         }
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -56,31 +57,10 @@ namespace App7
             if (resultCode == Result.Ok)
             {
                 var result = Steganografie.SchovejText(editText.Text, NGetBitmap(data.Data));
-                // saveImage(result);
-                SavePictureToDisk("Neco", result);
+                saveImage(result);
                 var activity = new Intent(this, typeof(MainActivity));             
                 StartActivity(activity);
             }
-        }
-        public void SavePictureToDisk(string filename, Bitmap bmp)
-        {
-            var dir = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim);
-            var pictures = dir.AbsolutePath;
-            //adding a time stamp time file name to allow saving more than one image... otherwise it overwrites the previous saved image of the same name
-            string name = filename + System.DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".jpg";
-            string filePath = System.IO.Path.Combine(pictures, name);
-            try
-            {
-                var os = new System.IO.FileStream(filePath, System.IO.FileMode.CreateNew);
-                bmp.Compress(Bitmap.CompressFormat.Png, 100, os);
-                
-                //mediascan adds the saved image into the gallery         
-            }
-            catch (System.Exception e)
-            {
-                System.Console.WriteLine(e.ToString());
-            }
-
         }
         private Android.Graphics.Bitmap NGetBitmap(Android.Net.Uri uriImage)
         {
