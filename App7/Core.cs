@@ -92,13 +92,13 @@ namespace App7
                         if (cisloPixelu % 8 == 0)
                         {
                             // posledni byte plnim nulamy 
-                         /*  if (vyplnNulami && pocetNul == 8)
+                           if (vyplnNulami && pocetNul == 8)
                             {
-                                if ((cisloPixelu - 1) % 3 < 2) // mozna by to šlo smazat ? 
+                                if ((cisloPixelu - 1) % 3 < 2) // mozna by to šlo smazat ?  - V žádném případě NEmazat!!!
                                 {
                                     bmp.SetPixel(j, i, Color.Argb(255,R, G, B));
                                 }
-                            }*/
+                            }
                             if (indexZnaku >= text.Length) {
                                 vyplnNulami = true;
                                 if(konec)
@@ -108,8 +108,6 @@ namespace App7
                                
                             else
                                 hodnotaZnaku = text[indexZnaku++];
-
-
                         }
                         switch (cisloPixelu % 3)
                         {
